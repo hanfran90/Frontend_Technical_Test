@@ -80,5 +80,8 @@
   },
   "ember": {
     "edition": "octane"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7"
   }
 }
