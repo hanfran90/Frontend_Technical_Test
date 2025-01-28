@@ -21,7 +21,13 @@ module.exports = function (environment) {
   };
 
   ENV.firebase = {
-    // add firebase config here
+    apiKey: 'AIzaSyDSdqj1k7yBWTiHxCDDWeO2th_Y0CX7DDQ',
+    authDomain: 'film-tracker-fd542.firebaseapp.com',
+    projectId: 'film-tracker-fd542',
+    storageBucket: 'film-tracker-fd542.firebasestorage.app',
+    messagingSenderId: '450097505285',
+    appId: '1:450097505285:web:b7f745ad3cf7ad3508a86c',
+    measurementId: 'G-3RYYEG2XWP',
   };
 
   if (environment === 'test') {
