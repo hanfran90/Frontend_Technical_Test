@@ -1,7 +1,12 @@
 <ul class={{this.styleNamespace}}>
-  {{#each @movies as |movie|}}
-    <MovieList::MovieListItem @movie={{movie}} />
-
-    <hr />
-  {{/each}}
+  {{#if @isLoading}}
+    <p>Loading your movies...</p>
+  {{else if @isError}}
+    <p>There has been an error loading your movie collection! Please try again!</p>
+  {{else}}
+    {{#each @movies as |movie|}}
+      <MovieList::MovieListItem @movie={{movie}} />
+      <hr />
+    {{/each}}
+  {{/if}}
 </ul>

@@ -21,21 +21,31 @@ export default class LandingPage extends Component {
    *
    */
   @tracked movies;
+  @tracked isLoading = true;
+  @tracked isError = false;
 
   @action async loadMovies() {
     const db = getFirestore();
     const moviesRef = collection(db, 'movies');
-    const moviesSnapshot = await getDocs(moviesRef);
-    const movies = [];
 
-    moviesSnapshot.forEach((doc) => movies.push(doc));
+    try {
+      // throw new Error();
+      const moviesSnapshot = await getDocs(moviesRef);
+      const movies = [];
 
-    this.movies = movies;
+      moviesSnapshot.forEach((doc) => movies.push(doc));
+
+      this.movies = movies;
+      this.isLoading = false;
+      this.isError = false;
+    } catch (error) {
+      this.isLoading = false;
+      this.isError = true;
+    }
   }
 
   constructor(owner, args) {
     super(owner, args);
-
     this.loadMovies();
   }
 }
