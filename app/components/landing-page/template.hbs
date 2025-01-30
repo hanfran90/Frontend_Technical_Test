@@ -1,7 +1,11 @@
 <div class={{this.styleNamespace}}>
   <MovieListHeader />
 
-  <MovieList @movies={{this.movies}} @isLoading={{this.isLoading}} @isError={{this.isError}} />
-
+  <MovieList
+    @movies={{this.movies}}
+    @isLoading={{this.isLoading}}
+    @isError={{this.isError}}
+    @deleteMovie={{this.deleteMovie}}
+  />
   <AddMovieForm @loadMovies={{this.loadMovies}} />
 </div>
