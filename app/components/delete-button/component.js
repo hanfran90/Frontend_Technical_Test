@@ -4,7 +4,6 @@ import podNames from 'ember-component-css/pod-names';
 
 export default class DeleteButton extends Component {
   styleNamespace = podNames['delete-button'];
-  
   @action
   handleClick(event) {
     event.preventDefault();
