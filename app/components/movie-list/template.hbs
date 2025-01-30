@@ -5,7 +5,10 @@
     <p>There has been an error loading your movie collection! Please try again!</p>
   {{else}}
     {{#each @movies as |movie|}}
-      <MovieList::MovieListItem @movie={{movie}} />
+      <MovieList::MovieListItem
+        @movie={{movie}}
+        @deleteMovie={{@deleteMovie}}
+      />
       <hr />
     {{/each}}
   {{/if}}

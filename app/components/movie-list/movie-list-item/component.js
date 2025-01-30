@@ -9,6 +9,6 @@ export default class MovieListItem extends Component {
   }
 
   get movie() {
-    return this.args.movie.data();
+    return this.args.movie;
   }
 }
