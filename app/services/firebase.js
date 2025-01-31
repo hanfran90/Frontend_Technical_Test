@@ -4,6 +4,8 @@ import {
   getFirestore,
   getDocs,
   deleteDoc,
+  doc,
+  updateDoc,
 } from 'firebase/firestore';
 import config from 'ember-quickstart/config/environment';
 import Service from '@ember/service';
@@ -32,5 +34,10 @@ export default class FirebaseService extends Service {
 
   async deleteMovie(movie) {
     await deleteDoc(movie.ref);
+  }
+
+  async updateMovie(movieId, title, description) {
+    const movieRef = doc(this.db, 'movies', movieId);
+    await updateDoc(movieRef, { title, description });
   }
 }

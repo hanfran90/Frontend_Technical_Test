@@ -3,7 +3,7 @@ import { setupRenderingTest } from 'ember-quickstart/tests/helpers';
 import { click, render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
-module('Integration | Component | delete-button', function (hooks) {
+module('Integration | Component | DeleteButton', function (hooks) {
   setupRenderingTest(hooks);
 
   test('renders a delete button', async function (assert) {
