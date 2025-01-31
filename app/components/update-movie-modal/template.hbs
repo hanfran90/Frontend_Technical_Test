@@ -1,0 +1,14 @@
+<div class={{this.styleNamespace}}>
+  <div>
+    <h2>Edit Movie</h2>
+  </div>
+  {{#if @movie}}
+    <UpdateMovieForm
+      @movie={{@movie}}
+      @closeModal={{@closeModal}}
+    />
+  {{else}}
+    <p>Loading movie details...</p>
+  {{/if}}
+  <button type="button" {{on "click" @closeModal}}>Close</button>
+</div>

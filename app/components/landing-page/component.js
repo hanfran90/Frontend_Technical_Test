@@ -8,9 +8,14 @@ export default class LandingPage extends Component {
   styleNamespace = podNames['landing-page'];
 
   @service firebase;
-  @tracked movies;
+  @tracked movies = [];
   @tracked isLoading = true;
   @tracked isError = false;
+
+  constructor(owner, args) {
+    super(owner, args);
+    this.loadMovies();
+  }
 
   @action
   async loadMovies() {
@@ -32,11 +37,6 @@ export default class LandingPage extends Component {
     } catch (error) {
       console.error('Error deleting movie:', error);
     }
-  }
-
-  constructor(owner, args) {
-    super(owner, args);
-    this.loadMovies();
   }
 }
 

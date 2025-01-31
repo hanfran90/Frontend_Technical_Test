@@ -3,7 +3,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
-module('Integration | Component | MovieListHeader', function (hooks) {
+module('Integration | Component | MovieListItem', function (hooks) {
   setupRenderingTest(hooks);
 
   test('renders the correct title and description for a movie', async function (assert) {

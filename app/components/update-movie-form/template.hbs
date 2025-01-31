@@ -1,0 +1,23 @@
+<form {{on "submit" this.handleFormSubmit}}>
+  <h2>{{@movie.title}}</h2>
+  <label for="title">Update the movie title here:</label>
+  <input
+    type="text"
+    id="title"
+    value={{@movie.title}}
+    {{on "input" this.handleUpdateTitle}}
+  />
+
+  <label for="description">Update the movie description here:</label>
+  <textarea
+    id="description"
+    {{on "input" this.handleUpdateDescription}}
+  >{{@movie.description}}</textarea>
+
+  <div class="modal-buttons">
+    <button type="submit">Save</button>
+  </div>
+  {{#if this.successMessage}}
+    <p>{{this.successMessage}}</p>
+  {{/if}}
+</form>

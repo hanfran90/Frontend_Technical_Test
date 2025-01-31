@@ -3,7 +3,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
-module('Integration | Component | MovieListHeader', function (hooks) {
+module('Integration | Component | MovieList', function (hooks) {
   setupRenderingTest(hooks);
 
   test('renders a loading message when waiting for movie data', async function (assert) {
