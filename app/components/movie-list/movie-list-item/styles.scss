@@ -1,5 +1,23 @@
 & {
-  .details > h2 {
+  .movie-container {
+    border: 2px solid rgb(199, 191, 191);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+  h2 {
+    padding-top: 2rem;
     color: #e91c50;
+  }
+
+  p {
+    padding-top: 1rem;
+  }
+
+  #movie-info {
+    padding: 1rem;
+  }
+  #movie-buttons {
+    padding-left: 25rem;
+    gap: 1rem;
   }
 }

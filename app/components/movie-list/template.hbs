@@ -1,8 +1,8 @@
 <ul class={{this.styleNamespace}}>
   {{#if @isLoading}}
-    <p>Loading your movies...</p>
+    <p class="loading-message">Loading your movies...</p>
   {{else if @isError}}
-    <p>There has been an error loading your movie collection! Please try again!</p>
+    <p class="error-message">There has been an error loading your movie collection! Please try again!</p>
   {{else}}
     {{#each @movies as |movie|}}
       <MovieList::MovieListItem
@@ -10,7 +10,6 @@
         @deleteMovie={{@deleteMovie}}
         @loadMovies={{@loadMovies}} 
       />
-      <hr />
     {{/each}}
   {{/if}}
 </ul>

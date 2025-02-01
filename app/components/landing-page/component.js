@@ -19,10 +19,13 @@ export default class LandingPage extends Component {
 
   @action
   async loadMovies() {
+    this.isLoading = true;
     try {
-      this.movies = await this.firebase.loadMovies();
-      this.isLoading = false;
-      this.isError = false;
+      setTimeout(async () => {
+        this.movies = await this.firebase.loadMovies();
+        this.isLoading = false;
+        this.isError = false;
+      }, 1000);
     } catch (error) {
       this.isLoading = false;
       this.isError = true;

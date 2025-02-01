@@ -2,8 +2,8 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import podNames from 'ember-component-css/pod-names';
 
-export default class DeleteButton extends Component {
-  styleNamespace = podNames['delete-button'];
+export default class DeleteMovieButton extends Component {
+  styleNamespace = podNames['delete-movie-button'];
   @action
   handleClick(event) {
     event.preventDefault();

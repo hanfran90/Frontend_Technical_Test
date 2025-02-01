@@ -3,14 +3,14 @@ import { setupRenderingTest } from 'ember-quickstart/tests/helpers';
 import { click, render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
-module('Integration | Component | DeleteButton', function (hooks) {
+module('Integration | Component | DeleteMovieButton', function (hooks) {
   setupRenderingTest(hooks);
 
   test('renders a delete button', async function (assert) {
     this.set('movie', { title: 'Movie 1', description: 'Description 1' });
 
     await render(
-      hbs`<DeleteButton @movie={{this.movie}} @deleteMovie={{@deleteMovie}} />`,
+      hbs`<DeleteMovieButton @movie={{this.movie}} @deleteMovie={{@deleteMovie}} />`,
     );
 
     assert.dom('button').exists();
@@ -27,7 +27,7 @@ module('Integration | Component | DeleteButton', function (hooks) {
       hbs`
         <ul>
           {{#each this.movies as |movie|}}
-            <DeleteButton @movie={{movie}} />
+            <DeleteMovieButton @movie={{movie}} />
           {{/each}}
         </ul>
       `,
@@ -57,7 +57,7 @@ module('Integration | Component | DeleteButton', function (hooks) {
       hbs`
         <ul>
           {{#each this.movies as |movie|}}
-            <DeleteButton @movie={{movie}} @deleteMovie={{this.deleteMovie}}/>
+            <DeleteMovieButton @movie={{movie}} @deleteMovie={{this.deleteMovie}}/>
           {{/each}}
         </ul>
       `,
@@ -91,7 +91,7 @@ module('Integration | Component | DeleteButton', function (hooks) {
       hbs`
         <ul>
           {{#each this.movies as |movie|}}
-            <DeleteButton @movie={{movie}} @deleteMovie={{this.deleteMovie}}/>
+            <DeleteMovieButton @movie={{movie}} @deleteMovie={{this.deleteMovie}}/>
           {{/each}}
         </ul>
       `,

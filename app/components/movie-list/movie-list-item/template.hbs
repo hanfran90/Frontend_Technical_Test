@@ -1,19 +1,26 @@
 <li class={{this.styleNamespace}}>
-  <div class="details">
-    <h2>
-      {{this.movie.title}}
-    </h2>
-    <p>
-      {{this.movie.description}}
-    </p>
-    <DeleteButton @movie={{this.movie}} @deleteMovie={{@deleteMovie}} />
-    <EditMovieButton @openModal={{fn this.openModal this.movie}} />
-    {{#if this.showModal}}
-      <UpdateMovieModal
-        @closeModal={{this.closeModal}}
-        @movie={{this.movie}}
-        @loadMovies={{this.loadMovies}}
-      />
-    {{/if}}
+  <div class="movie-container">
+    <div id="movie-info">
+      <h2>
+        {{this.movie.title}}
+      </h2>
+      <p>
+        {{this.movie.description}}
+      </p>
+      <div id="movie-buttons">
+        <DeleteMovieButton
+          @movie={{this.movie}}
+          @deleteMovie={{@deleteMovie}}
+        />
+        <EditMovieButton @openModal={{this.openModal}} @movie={{this.movie}} />
+        {{#if this.showModal}}
+          <UpdateMovieModal
+            @closeModal={{this.closeModal}}
+            @movie={{this.movie}}
+            @loadMovies={{this.loadMovies}}
+          />
+        {{/if}}
+      </div>
+    </div>
   </div>
 </li>

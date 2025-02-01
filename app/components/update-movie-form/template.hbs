@@ -1,5 +1,5 @@
-<form {{on "submit" this.handleFormSubmit}}>
-  <h2>{{@movie.title}}</h2>
+<form class={{this.styleNamespace}} {{on "submit" this.handleFormSubmit}}>
+  <h2 id="movie-name">{{@movie.title}}</h2>
   <label for="title">Update the movie title here:</label>
   <input
     type="text"
@@ -14,10 +14,10 @@
     {{on "input" this.handleUpdateDescription}}
   >{{@movie.description}}</textarea>
 
-  <div class="modal-buttons">
-    <button type="submit">Save</button>
+  <div>
+    <button id="save" type="submit">Save</button>
   </div>
   {{#if this.successMessage}}
-    <p>{{this.successMessage}}</p>
+    <p id="success-message"> {{this.successMessage}}</p>
   {{/if}}
 </form>
