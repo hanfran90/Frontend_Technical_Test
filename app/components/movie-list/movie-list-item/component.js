@@ -17,8 +17,8 @@ export default class MovieListItem extends Component {
     return this.args.movie;
   }
   @action
-  openModal() {
-    this.selectedMovie = this.movie;
+  openModal(movie) {
+    this.selectedMovie = movie;
     this.showModal = true;
     console.log('Modal Opened');
   }

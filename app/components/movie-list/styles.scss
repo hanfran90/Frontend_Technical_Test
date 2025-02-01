@@ -1,6 +1,17 @@
 & {
-  width: 50rem;
+  width: 100%;
   margin: 0;
   padding: 0;
   list-style-type: none;
+
+  .loading-message {
+    text-align: center;
+    font-size: 2rem;
+  }
+
+  .error-message {
+    text-align: center;
+    font-size: 2rem;
+    color: red;
+  }
 }
