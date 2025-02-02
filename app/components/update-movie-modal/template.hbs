@@ -1,9 +1,19 @@
-<div class={{this.styleNamespace}}>
-    <h2 id="title">Edit Movie</h2>
-    {{#if @movie}}
-      <UpdateMovieForm @movie={{@movie}} @closeModal={{@closeModal}} />
-    {{else}}
-      <p>Loading movie details...</p>
-    {{/if}}
-  <button type="button" id="close" {{on "click" @closeModal}}>Close</button>
+<div
+  class={{this.styleNamespace}}
+  role="dialog"
+  aria-labelledby="title"
+  aria-modal="true"
+>
+  <h2 id="title">Edit Movie</h2>
+  {{#if @movie}}
+    <UpdateMovieForm @movie={{@movie}} @closeModal={{@closeModal}} />
+  {{else}}
+    <p>Loading movie details...</p>
+  {{/if}}
+  <button
+    type="button"
+    id="close"
+    {{on "click" @closeModal}}
+    aria-label="Close edit movie modal"
+  >Close</button>
 </div>

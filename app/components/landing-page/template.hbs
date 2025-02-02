@@ -1,12 +1,20 @@
 <div class={{this.styleNamespace}}>
+  <header data-test-movie-list-header>
   <MovieListHeader />
-
+  </header>
+  <main data-test-movie-list>
   <MovieList
     @movies={{this.movies}}
     @isLoading={{this.isLoading}}
     @isError={{this.isError}}
     @deleteMovie={{this.deleteMovie}}
-    @loadMovies={{this.loadMovies}} 
+    @loadMovies={{this.loadMovies}}
   />
+  <div data-test-add-movie-form>
   <AddMovieForm @loadMovies={{this.loadMovies}} />
+  </div>
+</main>
+<footer>
+  Movie Mememto 2025
+</footer>
 </div>

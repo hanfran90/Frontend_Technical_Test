@@ -38,7 +38,7 @@ export default class LandingPage extends Component {
       await this.firebase.deleteMovie(movie);
       this.movies = this.movies.filter((m) => m.id !== movie.id);
     } catch (error) {
-      console.error('Error deleting movie:', error);
+      console.error('Failed to delete movie:', error);
     }
   }
 }
