@@ -1,9 +1,10 @@
 <form class={{this.styleNamespace}} {{on "submit" this.addMovie}}>
-  <label data-test-title-label>
+  <label for="movie-title" data-test-title-label>
     <h2>
       Title:
     </h2>
     <Input
+      id="movie-title"
       @type="text"
       @value={{this.title}}
       class="form-title"
@@ -11,26 +12,29 @@
     />
   </label>
 
-  <label data-test-description-label>
+  <label for="movie-description" data-test-description-label>
     <h2>
       Description:
     </h2>
     <Input
+      id="movie-description"
       @type="text"
       @value={{this.description}}
       class="form-description"
       placeholder="Description..."
-      required={{true}}
     />
   </label>
+
+  <button type="submit">
+    Add Movie
+  </button>
 
   {{#if this.errorMessage}}
     <div class="error-message">
       {{this.errorMessage}}
     </div>
+  {{else if this.successMessage}}
+    <div class="success-message"> {{this.successMessage}}</div>
   {{/if}}
 
-  <button type="submit">
-    Add Movie
-  </button>
 </form>

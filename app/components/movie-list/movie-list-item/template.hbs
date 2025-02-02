@@ -7,11 +7,18 @@
       <p>
         {{this.movie.description}}
       </p>
+      <div>
+      {{#if this.errorMessage}}
+        <p class="error-message">{{this.errorMessage}}</p>
+      {{/if}}
+
+      {{#if this.successMessage}}
+        <p class="success-message">{{this.successMessage}}</p>
+      {{/if}}
+      </div>
+      
       <div id="movie-buttons">
-        <DeleteMovieButton
-          @movie={{this.movie}}
-          @deleteMovie={{@deleteMovie}}
-        />
+        <DeleteMovieButton @handleDelete={{this.handleDelete}} />
         <EditMovieButton @openModal={{this.openModal}} @movie={{this.movie}} />
         {{#if this.showModal}}
           <UpdateMovieModal

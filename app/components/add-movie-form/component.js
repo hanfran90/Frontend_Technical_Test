@@ -15,6 +15,8 @@ export default class AddMovieForm extends Component {
 
   @tracked errorMessage;
 
+  @tracked successMessage;
+
   @action
   async addMovie(event) {
     event.preventDefault();
@@ -30,6 +32,10 @@ export default class AddMovieForm extends Component {
       this.title = undefined;
 
       this.args.loadMovies();
+      this.successMessage = 'Your movie has been added!';
+      setTimeout(() => {
+        this.successMessage = undefined;
+      }, 2000);
     } catch (error) {
       this.errorMessage = error?.message;
     }

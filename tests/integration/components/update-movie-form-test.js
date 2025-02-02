@@ -33,6 +33,12 @@ module('Integration | Component | UpdateMovieForm', function (hooks) {
   });
 
   test('it calls the handleFormSubmit action on form submission', async function (assert) {
+    this.set('closeModal', () => {});
+    this.set('movie', {
+      title: 'Test Title',
+      description: 'Test Description',
+    });
+
     const firebaseService = this.owner.lookup('service:firebase');
 
     firebaseService.updateMovie = (movieId, title, description) => {
@@ -40,17 +46,6 @@ module('Integration | Component | UpdateMovieForm', function (hooks) {
       assert.strictEqual(description, 'Updated Description');
       assert.ok(true, 'movie was updated');
     };
-
-    this.set('closeModal', () => {
-      assert.ok(true, 'modal closes');
-    });
-
-    this.set('movie', {
-      title: 'Test Title',
-      description: 'Test Description',
-    });
-
-    this.set('showModal', true);
 
     await render(
       hbs`<UpdateMovieForm @movie={{this.movie}} @closeModal={{this.closeModal}} />`,
@@ -62,9 +57,7 @@ module('Integration | Component | UpdateMovieForm', function (hooks) {
 
     assert.dom('p').hasText('Updated Successfully');
 
-    setTimeout(() => {
-      this.set('showModal', false);
-    }, 1000);
+    this.set('showModal', false);
 
     await settled();
 

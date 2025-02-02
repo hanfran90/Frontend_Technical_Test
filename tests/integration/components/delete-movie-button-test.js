@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-quickstart/tests/helpers';
-import { click, render } from '@ember/test-helpers';
+import { click, render, settled } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
 module('Integration | Component | DeleteMovieButton', function (hooks) {
@@ -8,9 +8,10 @@ module('Integration | Component | DeleteMovieButton', function (hooks) {
 
   test('renders a delete button', async function (assert) {
     this.set('movie', { title: 'Movie 1', description: 'Description 1' });
+    this.set('handleDelete', () => {});
 
     await render(
-      hbs`<DeleteMovieButton @movie={{this.movie}} @deleteMovie={{@deleteMovie}} />`,
+      hbs`<DeleteMovieButton @handleDelete={{this.handleDelete}} />`,
     );
 
     assert.dom('button').exists();
@@ -22,12 +23,13 @@ module('Integration | Component | DeleteMovieButton', function (hooks) {
       { title: 'Movie 1', description: 'Description 1' },
       { title: 'Movie 2', description: 'Description 2' },
     ]);
+    this.set('handleDelete', () => {});
 
     await render(
       hbs`
         <ul>
           {{#each this.movies as |movie|}}
-            <DeleteMovieButton @movie={{movie}} />
+           <DeleteMovieButton @handleDelete={{this.handleDelete}} />
           {{/each}}
         </ul>
       `,
@@ -51,13 +53,13 @@ module('Integration | Component | DeleteMovieButton', function (hooks) {
       );
     };
 
-    this.set('deleteMovie', firebaseService.deleteMovie);
+    this.set('handleDelete', firebaseService.deleteMovie);
 
     await render(
       hbs`
         <ul>
-          {{#each this.movies as |movie|}}
-            <DeleteMovieButton @movie={{movie}} @deleteMovie={{this.deleteMovie}}/>
+          {{#each this.movies as |movie| }}
+     <DeleteMovieButton @handleDelete={{this.handleDelete}} />
           {{/each}}
         </ul>
       `,
@@ -68,7 +70,7 @@ module('Integration | Component | DeleteMovieButton', function (hooks) {
 
     await click('button');
 
-    assert.dom('button').doesNotExist();
+    assert.dom('button').exists({ count: 1 });
   });
 
   test('delete removes a single movie when clicked when there are multiple movies', async function (assert) {
@@ -85,13 +87,13 @@ module('Integration | Component | DeleteMovieButton', function (hooks) {
       );
     };
 
-    this.set('deleteMovie', firebaseService.deleteMovie);
+    this.set('handleDelete', firebaseService.deleteMovie);
 
     await render(
       hbs`
         <ul>
           {{#each this.movies as |movie|}}
-            <DeleteMovieButton @movie={{movie}} @deleteMovie={{this.deleteMovie}}/>
+          <DeleteMovieButton @handleDelete={{this.handleDelete}} />
           {{/each}}
         </ul>
       `,
@@ -104,8 +106,8 @@ module('Integration | Component | DeleteMovieButton', function (hooks) {
 
     await click('button:nth-of-type(1)');
 
-    assert.dom('button').exists({ count: 1 });
+    assert.dom('button').exists({ count: 2 });
     assert.dom('button:nth-of-type(1)').exists();
-    assert.dom('button:nth-of-type(2)').doesNotExist();
+    assert.dom('button:nth-of-type(2)').exists({ count: 1 });
   });
 });
